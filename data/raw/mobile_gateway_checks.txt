@@ -1,0 +1,11 @@
+Mobile Gateway Health Check Procedures - Agra Site
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Mobile Gateway PDN session and statistics summary
++++++++++++++++++++++++++++++++++++++++++++++++++
+show mobile-gateway pdn statistics summary >> demo project gateway statistics
+
+Mobile Gateway APN statistics check
+(Note: Used for VIL and Vodafone Idea subscriber inspection)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+show mobile-gateway pdn apn "ims" statistics >> Voda & Idea

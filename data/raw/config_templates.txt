@@ -1,0 +1,18 @@
+Standard Configuration Command Templates
++++++++++++++++++++++++++++++++++++++++++
+
+Set MTU on an interface
++++++++++++++++++++++++
+configure port {interface} ethernet mtu {value}
+
+Shut down a port
+++++++++++++++++
+configure port {interface} shutdown
+
+Bring up a port
++++++++++++++++
+configure port {interface} no shutdown
+
+Save configuration
+++++++++++++++++++
+admin save

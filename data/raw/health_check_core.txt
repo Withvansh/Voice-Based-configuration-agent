@@ -1,0 +1,19 @@
+Core Router Health Check Procedures
+++++++++++++++++++++++++++++++++++++
+
+To check BGP status, they must be UP and connected
+(Note: Check peer connectivity and state)
++++++++++++++++++++++++++++++++++++++++++++++++++
+show router bgp summary >> core bgp peering check
+
+Verify router interfaces and operational state
+++++++++++++++++++++++++++++++++++++++++++++++
+show router interface >> interface ip and oper status
+
+Check active system alarms
+++++++++++++++++++++++++++
+show system alarm >> active alarm monitoring
+
+Check system NTP synchronization status
++++++++++++++++++++++++++++++++++++++++
+show system ntp >> ntp time synchronization

@@ -1,0 +1,5 @@
+admin reboot now
+admin reboot
+format
+rm -rf
+factory-default

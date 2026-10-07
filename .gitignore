@@ -1,0 +1,22 @@
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest cache
+.pytest_cache/
+
+# Databases and Vector Stores
+data/audit.db
+chroma_db/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
