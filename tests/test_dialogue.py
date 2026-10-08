@@ -124,5 +124,12 @@ def test_dialogue_flow_7_forced_verify_failure_automatic_rollback(agent_fixture)
     res = agent.process("sess_6", "confirm")
     assert "Verification failed" in res["reply_text"]
     assert "Automatically rolled back" in res["reply_text"]
-    # MTU should be restored back to 9000
     assert node.interfaces["ge-0/0/1"]["mtu"] == 9000
+
+
+def test_dialogue_flow_unindexed_query_returns_not_found(agent_fixture) -> None:
+    """Unindexed query like 'What's the weather' returns 'not found'."""
+    agent, node, adapter, rag = agent_fixture
+    res = agent.process("sess_weather", "What's the weather")
+    assert res["state"] == "IDLE"
+    assert "not found" in res["reply_text"].lower()
