@@ -289,7 +289,7 @@ class DialogueAgent:
                 return {
                     "session_id": session_id,
                     "state": "IDLE",
-                    "reply_text": "Command not found in authorized library.",
+                    "reply_text": "not found",
                 }
 
             match = matches[0]
@@ -364,7 +364,7 @@ class DialogueAgent:
                 return {
                     "session_id": session_id,
                     "state": "IDLE",
-                    "reply_text": "Configuration template not found in authorized library.",
+                    "reply_text": "not found",
                 }
 
             match = matches[0]
@@ -441,9 +441,24 @@ class DialogueAgent:
                 "source": source,
             }
 
-        # Unknown intent
+        # Check general RAG query fallback
+        matches = self.rag.search(text, k=1)
+        log_audit(session_id, "rag_lookup", {"query": text, "matches": matches})
+        if matches:
+            match = matches[0]
+            cmd = match["command"]
+            source = f"{match['source_file']} -> {match['section_heading']}"
+            output = self.adapter.show(cmd)
+            return {
+                "session_id": session_id,
+                "state": "IDLE",
+                "reply_text": f"Source: {source}\n\n{output}",
+                "source": source,
+            }
+
+        # If no matching command or template is found, reply "not found"
         return {
             "session_id": session_id,
             "state": "IDLE",
-            "reply_text": "Command or intent not recognized. I did not find a matching procedure.",
+            "reply_text": "not found",
         }
